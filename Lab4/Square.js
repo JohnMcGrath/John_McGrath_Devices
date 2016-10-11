@@ -1,10 +1,24 @@
-//Function used to create a square
+
 
 
 //Alerts are used to quickly tell what was loaded/used
 console.log("Squares.js Loaded");
 
+	var ctx;
+	var canvas;
+
+	//create the document
+	canvas = document.createElement("canvas");
+	document.body.appendChild(canvas);
+
+	//set the canvas size
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+
+//Function used to create a square
 function Square(x,y,colour){
+
 	this.m_x = x;
 	this.m_y = y;
 	this.m_colour = colour;
