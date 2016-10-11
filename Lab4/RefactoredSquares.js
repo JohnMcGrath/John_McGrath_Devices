@@ -1,5 +1,6 @@
 console.log("RefactoredSquares.js Loaded");
 
+//Global Variable
 app={};
 
 function main()

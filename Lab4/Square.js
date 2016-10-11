@@ -1,6 +1,3 @@
-
-
-
 //Alerts are used to quickly tell what was loaded/used
 console.log("Squares.js Loaded");
 
