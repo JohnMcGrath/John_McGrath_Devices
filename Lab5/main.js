@@ -3,7 +3,7 @@ app={};
 
 var ctx;
 var canvas;
-
+var x = [];
 //create the document
 canvas = document.createElement("canvas");
 document.body.appendChild(canvas);
@@ -20,9 +20,16 @@ var Game = function(){
 function main()
 {
 	var myGame = new Game();
-	app.myScene = new Scene("Lab 5");
 
-	app.myScene.Start();
-	app.myScene.DrawTitle();
-	app.myScene.End();
+	app.myScene1 = new Scene("Scene1");
+	app.myScene2 = new Scene("Scene2");
+	app.myScene3 = new Scene("Scene3");
+
+	x = [app.myScene1,app.myScene2,app.myScene3];
+	app.myManager = new SceneManager(x);
+
+	app.myScene4 = new Scene("Scene4");
+	app.myManager.addScene(app.myScene4);
+
+	app.myManager.goToScene(1);
 }
