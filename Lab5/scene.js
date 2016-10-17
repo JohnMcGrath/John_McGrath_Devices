@@ -22,5 +22,6 @@ Scene.prototype.DrawTitle = function(){
 };
 
 Scene.prototype.SetCurrent = function(){
+	console.log("Set Current Started");
 	this.DrawTitle();
 };

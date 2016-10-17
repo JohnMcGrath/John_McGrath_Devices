@@ -25,11 +25,11 @@ function main()
 	app.myScene2 = new Scene("Scene2");
 	app.myScene3 = new Scene("Scene3");
 
-	x = [app.myScene1,app.myScene2,app.myScene3];
+	app.x = [app.myScene1,app.myScene2,app.myScene3];
 	app.myManager = new SceneManager(x);
 
 	app.myScene4 = new Scene("Scene4");
 	app.myManager.addScene(app.myScene4);
 
-	app.myManager.goToScene(1);
+	app.myManager.goToScene("Scene2");
 }

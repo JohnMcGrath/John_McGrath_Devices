@@ -16,6 +16,16 @@ SceneManager.prototype.addScene = function(newScene){
 	console.log("New Scene: " + newScene.title + " added.")
 }; 
 
-SceneManager.prototype.goToScene = function(sceneNum){
-	console.log(app.sceneReference[sceneNum].title);
+SceneManager.prototype.goToScene = function(sceneName){
+	console.log("Debug: goToScene Method Started");
+	for(i=0;i<sceneReference.length;i++){
+
+		//Not going into loop? object undefined?
+		console.log(sceneReference[i].title);
+
+		if (sceneReference[i].title == sceneName)
+		{
+			app.sceneReference[i].SetCurrent();
+		}
+	}
 };
