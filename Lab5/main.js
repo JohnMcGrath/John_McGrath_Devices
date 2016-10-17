@@ -1,3 +1,6 @@
+//Global Variable
+app={};
+
 var ctx;
 var canvas;
 
@@ -17,4 +20,9 @@ var Game = function(){
 function main()
 {
 	var myGame = new Game();
+	app.myScene = new Scene("Lab 5");
+
+	app.myScene.Start();
+	app.myScene.DrawTitle();
+	app.myScene.End();
 }
