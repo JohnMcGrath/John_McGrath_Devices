@@ -1,4 +1,7 @@
-var sceneReference = [];
+//Scene reference remain undefined
+
+
+app.sceneReference = [];
 
 var SceneManager = function(params)
 {
