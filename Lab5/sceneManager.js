@@ -1,34 +1,17 @@
 //Scene reference remain undefined
-
-
-app.sceneReference = [];
-
-var SceneManager = function(params)
+var SceneManager = function()
 {
 console.log("Scene Manager Created");
-sceneReference = params;
-
-for(i=0;i<sceneReference.length;i++){
-	console.log(sceneReference[i].title);
-}
-
+this.sceneReference = {};
+this.currentScene = {};
 };
 
 SceneManager.prototype.addScene = function(newScene){
-	app.sceneReference += newScene;
+	this.sceneReference[newScene.title] = newScene;
 	console.log("New Scene: " + newScene.title + " added.")
 }; 
 
 SceneManager.prototype.goToScene = function(sceneName){
-	console.log("Debug: goToScene Method Started");
-	for(i=0;i<sceneReference.length;i++){
-
-		//Not going into loop? object undefined?
-		console.log(sceneReference[i].title);
-
-		if (sceneReference[i].title == sceneName)
-		{
-			app.sceneReference[i].SetCurrent();
-		}
-	}
+	this.currentScene = this.sceneReference[sceneName];
+	this.currentScene.DrawTitle();
 };

@@ -1,17 +1,16 @@
 var Scene = function(initTitle)
 {
-	this.Start();
 	this.title = initTitle;
-	console.log(this.title);
+	this.Start();
 	this.End();
 };
 
 Scene.prototype.Start = function(){
-	console.log("Scene Started");
+	console.log(this.title + " Started");
 };
 
 Scene.prototype.End = function(){
-console.log("Scene Ended");
+console.log(this.title + " Ended");
 };
 
 Scene.prototype.DrawTitle = function(){
@@ -22,6 +21,6 @@ Scene.prototype.DrawTitle = function(){
 };
 
 Scene.prototype.SetCurrent = function(){
-	console.log("Set Current Started");
+	console.log(this.title + " Set as Current");
 	this.DrawTitle();
 };
