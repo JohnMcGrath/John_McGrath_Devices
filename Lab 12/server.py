@@ -16,7 +16,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
 	def on_message(self, message):
 		self.write_message("You said: " + message)
-		self.send_to_other_player("Hello other player")
+		self.send_to_other_player(message)
 
 	def on_close(self):
 		pass
@@ -27,7 +27,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 	def send_to_other_player(self, message):
 		for key, value in connection.items():
 			if (key != self.get_player_address()):
-				self.write_message(message)
+				value.write_message("Only first to connect should get this")
 
 
 app= tornado.web.Application([
