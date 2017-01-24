@@ -22,6 +22,15 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 	def on_close(self):
 		pass
 
+	def get_player_address(self):
+		return self.request.remote_ip + str(self.stream.socket.getpeername()[1])
+
+	def send_to_other_player(self):
+		for key, value in connection.items():
+			if (key != self.get_player_address()):
+				self.write_message("Only Player 2 Should Get This")
+
+
 app= tornado.web.Application([
 	#map the handler to the URI named "test"
 	(r'/wstest', WSHandler),

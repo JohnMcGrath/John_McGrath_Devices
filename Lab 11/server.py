@@ -18,9 +18,12 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		self.write_message("You said: " + message)
 		second_address = self.request.remote_ip + str(self.stream.socket.getpeername()[1])
 		print("Second Address " + second_address)
+		connection[second_address] = second_address
 
 	def on_close(self):
 		pass
+
+
 
 app= tornado.web.Application([
 	#map the handler to the URI named "test"
