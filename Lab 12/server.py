@@ -10,25 +10,24 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		
 	def open(self):
 		print("Connection Opened")
-		first_address = self.request.remote_ip + str(self.stream.socket.getpeername()[1])
-		print("First Address: " + first_address)
-		connection[first_address] = self
+		player_address =self.get_player_address()
+		print("First Address: " + player_address)
+		connection[player_address] = self
 
 	def on_message(self, message):
 		self.write_message("You said: " + message)
-		second_address = self.request.remote_ip + str(self.stream.socket.getpeername()[1])
-		print("Second Address " + second_address)
+		self.send_to_other_player(message)
 
 	def on_close(self):
 		pass
 
 	def get_player_address(self):
-		return self.request.remote_ip + str(self.stream.socket.getpeername()[1])
+		return self.request.remote_ip+ ", " + str(self.stream.socket.getpeername()[1])
 
-	def send_to_other_player(self):
+	def send_to_other_player(self, message):
 		for key, value in connection.items():
 			if (key != self.get_player_address()):
-				self.write_message("Only Player 2 Should Get This")
+				self.write_message("Only first to connect should get this")
 
 
 app= tornado.web.Application([
