@@ -11,13 +11,13 @@ ws.onopen = function() {
 	objMessage.type = "test";
 	objMessage.data = "hello";
 
-	JSON.stringify(objMessage);
-
 	     ws.send(objMessage);
 };
 //called when the client receives a message
 ws.onmessage = function (evt) {
-   console.log(evt.data);
+	JSON.parse(JSON.stringify(evt));
+	console.log(JSON.parse(JSON.stringify(evt)));
+  // console.log(evt.data);
 };	
 	</script>
 </html>

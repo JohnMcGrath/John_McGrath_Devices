@@ -11,7 +11,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 	def open(self):
 		print("Connection Opened")
 		player_address =self.get_player_address()
-		print("First Address: " + player_address)
+		print("Player Address: " + player_address)
 		connection[player_address] = self
 
 	def on_message(self, message):
