@@ -19,6 +19,14 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		self.write_message(message)
 		self.send_to_other_player(message)
 
+		messageDict = json.loads(message)
+		print(messageDict)
+
+		if messageDict["type"] == "updateState":
+			
+		#if message.type ==  updateState
+
+
 	def on_close(self):
 		pass
 
