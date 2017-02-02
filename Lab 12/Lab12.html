@@ -1,24 +1,43 @@
 <!DOCTYPE HTML>
 <html> 
-	<script>
+<script>
 	var ws = new WebSocket("ws://localhost:8080/wstest");
-//called when the websocket is opened
+
+updateState = function(){
+	var cursorX = event.clientX;     // Get the horizontal coordinate
+	var cursorY = event.clientY;     // Get the vertical coordinate
+	console.log(cursorX);
+	console.log(cursorY);
+	var updateState = {};
+	updateState.type = "updateState"
+	updateState.data = {x:cursorX,  y:cursorY};
+
+	var  updateMessage = JSON.stringify(updateState);
+	console.log(updateMessage);
+	ws.send(updateMessage);
+};
+
+document.onclick = function(){
+	updateState();
+}
+
 ws.onopen = function() {
-
-      //ws.send_to_other_player();
-
     var objMessage = {};
 	objMessage.type = "test";
 	objMessage.data = "hello";
 
-	     ws.send(objMessage);
+	
+
+	var jsonMessage = JSON.stringify(objMessage);
+	ws.send(jsonMessage);
+	updateState();
 };
+
+
 //called when the client receives a message
-ws.onmessage = function (evt) {
-	JSON.parse(JSON.stringify(evt));
-	console.log(JSON.parse(JSON.stringify(evt)));
-  // console.log(evt.data);
+ws.onmessage = function(evt) {
+	var jsonObject = JSON.parse(evt.data);
+	console.log(jsonObject);
 };	
 	</script>
 </html>
-	

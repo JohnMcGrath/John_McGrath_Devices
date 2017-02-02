@@ -1,5 +1,6 @@
 from tornado import websocket, web, ioloop, httpserver
 import tornado
+import json
 
 connection = {}
 
@@ -15,7 +16,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		connection[player_address] = self
 
 	def on_message(self, message):
-		self.write_message("You said: " + message)
+		self.write_message(message)
 		self.send_to_other_player(message)
 
 	def on_close(self):
