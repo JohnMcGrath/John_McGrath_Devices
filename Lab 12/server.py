@@ -23,9 +23,12 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		print(messageDict)
 
 		if messageDict["type"] == "updateState":
-			
-		#if message.type ==  updateState
+			self.send_to_other_player(messageDict)
 
+	def send_to_other_player(self, message):
+		for key, value in connection.items():
+			if (key != self.get_player_address()):
+				value.write_message(message)
 
 	def on_close(self):
 		pass
@@ -33,10 +36,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 	def get_player_address(self):
 		return self.request.remote_ip+ ", " + str(self.stream.socket.getpeername()[1])
 
-	def send_to_other_player(self, message):
-		for key, value in connection.items():
-			if (key != self.get_player_address()):
-				value.write_message("Only first to connect should get this")
+
 
 
 app= tornado.web.Application([

@@ -36,6 +36,9 @@ ws.onopen = function() {
 
 //called when the client receives a message
 ws.onmessage = function(evt) {
+	if (evt.type == "updateState"){
+		console.log(evt.data);
+	}
 	var jsonObject = JSON.parse(evt.data);
 	console.log(jsonObject);
 };	
